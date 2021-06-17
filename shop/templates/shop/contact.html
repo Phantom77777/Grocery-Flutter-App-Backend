@@ -1,0 +1,56 @@
+{% extends 'shop/basic.html' %}
+{% block css %}
+            a:hover{
+text-decoration: none;
+color: black
+}
+
+a{
+color: white;
+}
+{% endblock %}
+{% block body %}
+<div class="container my-3">
+    <h3>Contact Us</h3>
+    <form action="/shop/contact/" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" required="true" name='name' placeholder="Enter Your Name">
+  </div>
+  <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control" id="email" name='email' required="true" placeholder="Enter Your Email">
+  </div>
+
+    <div class="form-group">
+    <label for="name">Phone</label>
+    <input type="tel" class="form-control" id="phone" name='phone' required="true" placeholder="Enter Your Phone Number">
+  </div>
+
+
+   <div class="form-group">
+    <label for="description">How May We Help You?</label>
+    <textarea class="form-control" id="description" required="true" name='description' rows="3"></textarea>
+  </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    document.querySelector(".searchProduct").innerHTML = ""
+    document.querySelector(".cart-button").innerHTML = ""
+    {% if check %}
+Swal.fire({
+  title: 'Email Sent Successfully!',
+  text: 'We have received your email and will respond as soon as possible.',
+  icon: 'success',
+  confirmButtonText: '<a href="/shop">OK </a>'
+})
+{% endif %}
+</script>
+{% endblock %}
